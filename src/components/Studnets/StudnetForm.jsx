@@ -1,6 +1,11 @@
-import { useState } from "react";
+// export default StudentForm;
+import { useEffect, useState } from "react";
 
-const StudentForm = ({ addStudent }) => {
+const StudentForm = ({
+  addStudent,
+  updateStudent,
+  editingStudent,
+}) => {
   const [formData, setFormData] = useState({
     name: "",
     class: "",
@@ -9,13 +14,23 @@ const StudentForm = ({ addStudent }) => {
     phone: "",
   });
 
+  useEffect(() => {
+    if (editingStudent) {
+      setFormData(editingStudent);
+    }
+  }, [editingStudent]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addStudent({
-      id: Date.now(),
-      ...formData,
-    });
+    if (editingStudent) {
+      updateStudent(formData);
+    } else {
+      addStudent({
+        id: Date.now(),
+        ...formData,
+      });
+    }
 
     setFormData({
       name: "",
@@ -32,74 +47,69 @@ const StudentForm = ({ addStudent }) => {
       className="grid grid-cols-2 gap-4 mb-5"
     >
       <input
-        type="text"
-        placeholder="Student Name"
         value={formData.name}
+        placeholder="Name"
+        className="border p-3"
         onChange={(e) =>
           setFormData({
             ...formData,
             name: e.target.value,
           })
         }
-        className="border p-3"
       />
 
       <input
-        type="text"
-        placeholder="Class"
         value={formData.class}
+        placeholder="Class"
+        className="border p-3"
         onChange={(e) =>
           setFormData({
             ...formData,
             class: e.target.value,
           })
         }
-        className="border p-3"
       />
 
       <input
-        type="text"
-        placeholder="Roll"
         value={formData.roll}
+        placeholder="Roll"
+        className="border p-3"
         onChange={(e) =>
           setFormData({
             ...formData,
             roll: e.target.value,
           })
         }
-        className="border p-3"
       />
 
       <input
-        type="text"
-        placeholder="Guardian"
         value={formData.guardian}
+        placeholder="Guardian"
+        className="border p-3"
         onChange={(e) =>
           setFormData({
             ...formData,
             guardian: e.target.value,
           })
         }
-        className="border p-3"
       />
 
       <input
-        type="text"
-        placeholder="Phone"
         value={formData.phone}
+        placeholder="Phone"
+        className="border p-3"
         onChange={(e) =>
           setFormData({
             ...formData,
             phone: e.target.value,
           })
         }
-        className="border p-3"
       />
 
-      <button
-        className="bg-blue-500 text-white p-3 rounded"
-      >
-        Add Student
+      <button className="bg-blue-600 text-white p-3 rounded">
+        {editingStudent
+          ? "Update Student"
+          : "Add Student"}
       </button>
     </form>
   );
