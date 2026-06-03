@@ -1,19 +1,3 @@
-// const Students = () => {
-//   return (
-//     <div>
-//       <h2 className="text-2xl font-bold mb-5">
-//         Students Management
-//       </h2>
-
-//       <button className="bg-blue-500 text-white px-4 py-2 rounded">
-//         Add Student
-//       </button>
-//     </div>
-//   );
-// };
-
-// export default Students;
-
 import { useState } from "react";
 
 import studentsData from "../data/studentsData";
@@ -22,7 +6,7 @@ import StudentForm from "../components/Studnets/StudnetForm";
 import StudentSearch from "../components/Studnets/StudentSearch";
 import StudentTable from "../components/Studnets/StudentTable";
 
-const Students = () => {
+const Students2 = () => {
   const [students, setStudents] =
     useState(studentsData);
 
@@ -59,4 +43,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default Students2;

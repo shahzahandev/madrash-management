@@ -11,20 +11,21 @@ const router = createBrowserRouter([
     path: "/",
     element: <DashboardLayout />,
     children: [
+
       {
         index: true,
         element: <Dashboard />,
       },
+
+
       {
         path: "students",
         element: <Students />,
       },
+
     ],
   },
 ]);
 
 export default router;
 
-// createRoot(document.getElementById('root')).render(
-//   <RouterProvider router={router} />
-// )
