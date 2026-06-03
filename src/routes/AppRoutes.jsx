@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DashboardLayout from '../layouts/DashboardLayout';
 import Dashboard from "../pages/Dashbaord";
 import Students from "../pages/Students";
+import Teachers from "../pages/Teachers";
+
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,11 @@ const router = createBrowserRouter([
       {
         path: "students",
         element: <Students />,
+      },
+
+      {
+        path: "teachers",
+        element: <Teachers />,
       },
 
     ],

@@ -6,14 +6,11 @@ import StudentSearch from "../components/Studnets/StudentSearch";
 import StudentProfile from "../components/Studnets/StudnetProfile";
 
 const Students = () => {
-  const [students, setStudents] =
-    useState(studentsData);
+  const [students, setStudents] = useState(studentsData);
 
-  const [editingStudent, setEditingStudent] =
-    useState(null);
+  const [editingStudent, setEditingStudent] = useState(null);
 
-  const [selectedStudent, setSelectedStudent] =
-    useState(null);
+  const [selectedStudent, setSelectedStudent] = useState(null);
 
   const [search, setSearch] = useState("");
 
@@ -24,9 +21,7 @@ const Students = () => {
   const updateStudent = (updatedStudent) => {
     setStudents(
       students.map((student) =>
-        student.id === updatedStudent.id
-          ? updatedStudent
-          : student
+        student.id === updatedStudent.id ? updatedStudent : student
       )
     );
 
@@ -35,15 +30,16 @@ const Students = () => {
 
   const handleDelete = (id) => {
     setStudents(
-      students.filter(
-        (student) => student.id !== id
-      )
-    );
+      students.filter((student) => student.id !== id));
   };
 
   const handleEdit = (student) => {
     setEditingStudent(student);
   };
+// pore add hoichhe---selected korar jonno
+  const handleView = (student) => {
+    setSelectedStudent(student);
+};
 
   const filteredStudents =
     students.filter((student) =>
@@ -54,6 +50,10 @@ const Students = () => {
 
   return (
     <div>
+       <h2 className="text-3xl font-bold mb-5">
+        Student Management
+      </h2>
+
       <StudentForm
         addStudent={addStudent}
         updateStudent={updateStudent}
@@ -67,6 +67,8 @@ const Students = () => {
 
       <StudentTable
         students={filteredStudents}
+        // pore add hoichhe---selected korar jonno
+        handleView={handleView}
         handleEdit={handleEdit}
         handleDelete={handleDelete}
       />

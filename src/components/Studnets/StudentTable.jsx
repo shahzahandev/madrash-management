@@ -2,6 +2,7 @@ import StudentActions from "./StudentActions";
 
 const StudentTable = ({
   students,
+  handleView,
   handleEdit,
   handleDelete,
 }) => {
@@ -30,6 +31,7 @@ const StudentTable = ({
             <td>
               <StudentActions
                 student={student}
+                handleView={handleView}
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
               />
